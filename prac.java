@@ -1,5 +1,7 @@
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class prac {
 
@@ -42,11 +44,37 @@ public class prac {
         /* maximum achieveable */
         // System.out.println(theMaximumAchievableX(3, 2));
 
-        char[] s = { 'h', 'e', 'l', 'l', 'o' };
-        reverseString(s);
-        for (char c : s) {
-            System.out.print(c);
-        }
+        /* reverseString */
+        // char[] s = { 'h', 'e', 'l', 'l', 'o' };
+        // reverseString(s);
+        // for (char c : s) {
+        // System.out.print(c);
+        // }
+
+        /* running sum of 1D array */
+        // int[] nums = { 1, 2, 3, 4 };
+        // int[] ans = runningSum(nums);
+
+        // for (int i : ans) {
+        // System.out.println(i);
+        // }
+
+        /* Richest Customer Wealth */
+        // int[][] a = { { 1, 2, 3 }, { 3, 2, 1 } };
+        // int ans = maximumWealth(a);
+        // System.out.println(ans);
+
+        /* Fizz Buzz */
+        // int n = 15;
+        // List<String> a = fizzBuzz(n);
+        // for (String string : a) {
+        // System.out.println(string);
+        // }
+
+        /* Number of steps to Zero */
+        int a = 14;
+        int ans = numberOfSteps(a);
+        System.out.println(ans);
 
     }
 
@@ -169,4 +197,68 @@ public class prac {
 
     }
 
+    static int[] runningSum(int[] nums) {
+        int[] a = new int[nums.length];
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            a[i] = sum;
+        }
+
+        return a;
+    }
+
+    static int maximumWealth(int[][] accounts) {
+
+        int max = 0;
+
+        for (int i = 0; i < accounts.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < accounts[0].length; j++) {
+                sum = sum + accounts[i][j];
+                max = Math.max(max, sum);
+            }
+        }
+
+        return max;
+    }
+
+    static List<String> fizzBuzz(int n) {
+        List<String> a = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+
+            if (i % 3 == 0 && i % 5 == 0) {
+                a.add("FizzBuzz");
+
+            } else if (i % 3 == 0) {
+                a.add("Fizz");
+            } else if (i % 5 == 0) {
+                a.add("Buzz");
+            } else
+                a.add(i + "");
+
+        }
+
+        return a;
+
+    }
+
+    static int numberOfSteps(int num) {
+        int ans = 0;
+        int count = 0;
+        int n = num;
+        while (n > 0) {
+            if (n % 2 == 0) {
+                n = n / 2;
+                count++;
+            } else {
+                n = n - 1;
+                count++;
+            }
+
+        }
+
+        return count;
+    }
 }
