@@ -125,9 +125,18 @@ public class prac {
         // System.out.println(ans);
 
         /* Find number with even digits */
-        int[] arr = { 555, 901, 482, 1771 };
-        int ans = findNumbers(arr);
-        System.out.println(ans);
+        // int[] arr = { 555, 901, 482, 1771 };
+        // int ans = findNumbers(arr);
+        // System.out.println(ans);
+
+        /* Square of sorted array */
+        int[] arr = { -4, -1, 0, 3, 10 };
+        int[] ans = sortedSquares(arr);
+
+        for (int i = 0; i < ans.length; i++) {
+            System.out.println(arr[i]);
+        }
+
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -385,6 +394,22 @@ public class prac {
         }
 
         return count;
+    }
+
+    static int[] sortedSquares(int[] nums) {
+        int[] sorted = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+            sorted[i] = nums[i] * nums[i];
+            System.out.println(sorted[i]);
+        }
+        Arrays.sort(sorted);
+
+        return sorted;
+    }
+
+    static void duplicateZeros(int[] arr) {
+
     }
 
 }
