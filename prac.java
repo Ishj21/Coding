@@ -3,6 +3,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
 public class prac {
 
     public static void main(String args[]) {
@@ -78,25 +95,39 @@ public class prac {
 
         /* middle of linked list */
 
-        ListNode node0 = new ListNode(1);
-        ListNode node1 = new ListNode(2);
-        ListNode node2 = new ListNode(3);
-        ListNode node3 = new ListNode(4);
-        ListNode node4 = new ListNode(5);
-        ListNode node5 = new ListNode(6);
+        // ListNode node0 = new ListNode(1);
+        // ListNode node1 = new ListNode(2);
+        // ListNode node2 = new ListNode(3);
+        // ListNode node3 = new ListNode(4);
+        // ListNode node4 = new ListNode(5);
+        // ListNode node5 = new ListNode(6);
 
-        node0.next = node1;
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
+        // node0.next = node1;
+        // node1.next = node2;
+        // node2.next = node3;
+        // node3.next = node4;
+        // node4.next = node5;
 
-        ListNode ans = middleNode(node0);
-        while (ans != null) {
-            // System.out.println(ans.val);
-            ans = ans.next;
-        }
+        // ListNode ans = middleNode(node0);
+        // while (ans != null) {
+        // // System.out.println(ans.val);
+        // ans = ans.next;
+        // }
 
+        /* Construct wala ques */
+        // String ransom = "aa";
+        // String magazine = "aab";
+        // System.out.println(canConstruct(ransom, magazine));
+
+        /* Max Consecutive ones */
+        // int[] arr = { 1, 0, 1, 1, 0, 1 };
+        // int ans = findMaxConsecutiveOnes(arr);
+        // System.out.println(ans);
+
+        /* Find number with even digits */
+        int[] arr = { 555, 901, 482, 1771 };
+        int ans = findNumbers(arr);
+        System.out.println(ans);
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -292,21 +323,68 @@ public class prac {
         return slow;
 
     }
-}
 
-class ListNode {
-    int val;
-    ListNode next;
+    static boolean canConstruct(String ransomNote, String magazine) {
 
-    ListNode() {
+        // wrong ans
+        // TODO: Will do when hashmap
+        boolean ans = false;
+
+        char[] a = ransomNote.toCharArray();
+        char[] b = magazine.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        String rn = new String(a);
+        String mz = new String(b);
+
+        if (mz.contains(rn)) {
+            ans = true;
+        }
+        System.out.println(ans);
+        return ans;
     }
 
-    ListNode(int val) {
-        this.val = val;
+    static int findMaxConsecutiveOnes(int[] nums) {
+
+        int max = 0;
+        int conOne = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                conOne++;
+            }
+            if (nums[i] == 0) {
+                conOne = 0;
+            }
+            if (conOne > max) {
+                max = conOne;
+            }
+        }
+        return max;
     }
 
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
+    static int findNumbers(int[] nums) {
+        int ans = 0;
+
+        for (int i : nums) {
+
+            if (digitNum(i) % 2 == 0) {
+                ans++;
+            }
+
+        }
+        return ans;
     }
+
+    static int digitNum(int a) {
+
+        int count = 0;
+        while (a > 0) {
+            count++;
+            a = a / 10;
+
+        }
+
+        return count;
+    }
+
 }
