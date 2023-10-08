@@ -72,9 +72,30 @@ public class prac {
         // }
 
         /* Number of steps to Zero */
-        int a = 14;
-        int ans = numberOfSteps(a);
-        System.out.println(ans);
+        // int a = 14;
+        // int ans = numberOfSteps(a);
+        // System.out.println(ans);
+
+        /* middle of linked list */
+
+        ListNode node0 = new ListNode(1);
+        ListNode node1 = new ListNode(2);
+        ListNode node2 = new ListNode(3);
+        ListNode node3 = new ListNode(4);
+        ListNode node4 = new ListNode(5);
+        ListNode node5 = new ListNode(6);
+
+        node0.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+
+        ListNode ans = middleNode(node0);
+        while (ans != null) {
+            // System.out.println(ans.val);
+            ans = ans.next;
+        }
 
     }
 
@@ -260,5 +281,32 @@ public class prac {
         }
 
         return count;
+    }
+
+    static ListNode middleNode(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
