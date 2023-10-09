@@ -1,6 +1,8 @@
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 class ListNode {
@@ -134,9 +136,27 @@ public class prac {
         int[] ans = sortedSquares(arr);
 
         for (int i = 0; i < ans.length; i++) {
-            System.out.println(arr[i]);
+            // System.out.println(arr[i]);
         }
 
+        /* minProcessingTime */
+        // processorTime = [8,10], tasks = [2,2,3,1,8,7,4,5]
+
+        List<Integer> pt = new ArrayList<>();
+        pt.add(33);
+        pt.add(320);
+        List<Integer> tasks = new ArrayList<>();
+        tasks.add(132);
+        tasks.add(68);
+        tasks.add(232);
+        tasks.add(166);
+        tasks.add(30);
+        tasks.add(300);
+        tasks.add(112);
+        tasks.add(138);
+
+        int a = minProcessingTime(pt, tasks);
+        System.out.println(a);
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -401,7 +421,7 @@ public class prac {
 
         for (int i = 0; i < nums.length; i++) {
             sorted[i] = nums[i] * nums[i];
-            System.out.println(sorted[i]);
+            // System.out.println(sorted[i]);
         }
         Arrays.sort(sorted);
 
@@ -410,6 +430,48 @@ public class prac {
 
     static void duplicateZeros(int[] arr) {
 
+    }
+
+    // processorTime = [8,10], tasks = [2,2,3,1,8,7,4,5]
+    static int minProcessingTime(List<Integer> processorTime, List<Integer> tasks) {
+
+        // [33,320]
+        // [132,68,232,166,30,300,112,138]
+     
+        int p1 = Integer.MAX_VALUE;
+        int p2 = Integer.MIN_VALUE;
+        int p1t = 0;
+        int p2t = 0;
+        Collections.sort(tasks);
+        System.out.println(tasks);
+        for (int i = 0; i < tasks.size(); i++) {
+            if (i > (tasks.size() / 2) - 1) {
+                // int p1 = Math.min(processorTime.get(0), processorTime.get(1));
+                for (Integer pro : processorTime) {
+                    if (pro < p1) {
+                        p1 = pro;
+                    }
+                }
+                if (p1 + tasks.get(i) > p1t) {
+                    p1t = p1 + tasks.get(i);
+                }
+            } else {
+
+                // p2 = Math.max(processorTime.get(0), processorTime.get(1));
+                for (Integer pro : processorTime) {
+                    if (pro > p2) {
+                        p2 = pro;
+                    }
+                }
+                if (p2 + tasks.get(i) > p2t) {
+                    p2t = p2 + tasks.get(i);
+                }
+
+            }
+        }
+        System.out.println(p1t);
+        System.out.println(p2t);
+        return Math.max(p1t, p2t);
     }
 
 }
