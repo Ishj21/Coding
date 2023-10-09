@@ -130,12 +130,17 @@ public class prac {
         // System.out.println(ans);
 
         /* Square of sorted array */
-        int[] arr = { -4, -1, 0, 3, 10 };
-        int[] ans = sortedSquares(arr);
+        // int[] arr = { -4, -1, 0, 3, 10 };
+        // int[] ans = sortedSquares(arr);
 
-        for (int i = 0; i < ans.length; i++) {
-            System.out.println(arr[i]);
-        }
+        // for (int i = 0; i < ans.length; i++) {
+        // System.out.println(arr[i]);
+        // }
+
+        /* Duplicate Zeros */
+
+        int[] arr = { 1, 0, 2, 3, 0, 4, 5, 0 };
+        duplicateZeros(arr);
 
     }
 
@@ -408,8 +413,34 @@ public class prac {
         return sorted;
     }
 
-    static void duplicateZeros(int[] arr) {
+    static void duplicateZeroswitharray(int[] arr) {
+        // [1,0,0,2,3,0,0,4]
+        int temp = 0;
+        ArrayList<Integer> a = new ArrayList<>(arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            a.add(arr[i]);
+            if (arr[i] == 0) {
+                a.add(0);
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = a.get(i);
+        }
+    }
 
+    static void duplicateZeros(int[] arr) {
+        // [1,0,0,2,3,0,0,4]
+        int temp = 0;
+        ArrayList<Integer> a = new ArrayList<>(arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            a.add(arr[i]);
+            if (arr[i] == 0) {
+                a.add(0);
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = a.get(i);
+        }
     }
 
 }
