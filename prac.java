@@ -141,27 +141,60 @@ public class prac {
 
         /* Duplicate Zeros */
 
-        int[] arr = { 1, 0, 2, 3, 0, 4, 5, 0 };
-        duplicateZeros(arr);
+        // int[] arr = { 1, 0, 2, 3, 0, 4, 5, 0 };
+        // duplicateZeros(arr);
 
         /* minProcessingTime */
         // processorTime = [8,10], tasks = [2,2,3,1,8,7,4,5]
 
-        List<Integer> pt = new ArrayList<>();
-        pt.add(33);
-        pt.add(320);
-        List<Integer> tasks = new ArrayList<>();
-        tasks.add(132);
-        tasks.add(68);
-        tasks.add(232);
-        tasks.add(166);
-        tasks.add(30);
-        tasks.add(300);
-        tasks.add(112);
-        tasks.add(138);
+        // List<Integer> pt = new ArrayList<>();
+        // pt.add(33);
+        // pt.add(320);
+        // List<Integer> tasks = new ArrayList<>();
+        // tasks.add(132);
+        // tasks.add(68);
+        // tasks.add(232);
+        // tasks.add(166);
+        // tasks.add(30);
+        // tasks.add(300);
+        // tasks.add(112);
+        // tasks.add(138);
 
-        int a = minProcessingTime(pt, tasks);
-        System.out.println(a);
+        // int a = minProcessingTime(pt, tasks);
+        // System.out.println(a);
+
+        /* SparseArray */
+
+        // int nums1[] = { 0 };
+        // int m = 0;
+        // int[] nums2 = { 1 };
+        // int n = 1;
+        // int nums1[] = { 1 };
+        // int m = 1;
+        // int[] nums2 = {};
+        // int n = 0;
+        // int nums1[] = { 1, 2, 3, 0, 0, 0 };
+        // int m = 3;
+        // int[] nums2 = { 2, 5, 6 };
+        // int n = 3;
+
+        // merge(nums1, m, nums2, n);
+
+        /* removeElement */
+        // int[] nums = { 3, 2, 2, 3 };
+        // int val = 3;
+
+        // System.out.println(removeElement(nums, val));
+
+        /* Remove duplicates from array */
+
+        // int[] nums = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+        // int[] nums = { 1, 1, 2 };
+        // System.out.println(removeDuplicates(nums));
+
+        /* 2873. Maximum Value of an Ordered Triplet I */
+        int nums[] = { 1, 2, 3 };
+        System.out.println(maximumTripletValue(nums));
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -462,12 +495,13 @@ public class prac {
             arr[i] = a.get(i);
         }
     }
+
     // processorTime = [8,10], tasks = [2,2,3,1,8,7,4,5]
     static int minProcessingTime(List<Integer> processorTime, List<Integer> tasks) {
 
         // [33,320]
         // [132,68,232,166,30,300,112,138]
-     
+
         int p1 = Integer.MAX_VALUE;
         int p2 = Integer.MIN_VALUE;
         int p1t = 0;
@@ -504,4 +538,86 @@ public class prac {
         return Math.max(p1t, p2t);
     }
 
+    static void merge(int[] nums1, int m, int[] nums2, int n) {
+
+        for (int i = 0; i < n; i++) {
+            nums1[i + m] = nums2[i];
+        }
+
+        Arrays.sort(nums1);
+
+        for (int i = 0; i < nums1.length; i++) {
+            System.out.println(nums1[i]);
+
+        }
+
+    }
+
+    static int removeElement(int[] nums, int val) {
+        // int ans = 0;
+        // ArrayList<Integer> ar = new ArrayList<>();
+        // for (int i : nums) {
+        // if (i != val) {
+        // ar.add(i);
+        // }
+
+        // }
+
+        // for (int i = 0; i < ar.size(); i++) {
+        // nums[i] = ar.get(i);
+        // System.out.println(nums[i]);
+        // }
+
+        // return ar.size();
+        // }
+
+        int count = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+
+            if (nums[i] != val) {
+                nums[count++] = nums[i];
+            }
+        }
+
+        return count;
+
+    }
+
+    static int removeDuplicates(int[] nums) {
+        int a = 0;
+
+        int[] arr = new int[nums.length];
+        int j = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                arr[j++] = nums[i];
+
+            }
+        }
+
+        for (int i : arr) {
+            System.out.println(i);
+        }
+        return j;
+
+    }
+
+    static long maximumTripletValue(int[] nums) {
+
+        long a = Long.MIN_VALUE;
+        long best = 0;
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            for (int j = i + 1; j < nums.length - 1; j++) {
+                for (int j2 = j + 1; j2 < nums.length; j2++) {
+                    best = Math.max(best, (long) (nums[i] - nums[j]) * nums[j2]);
+                    System.out.println(best);
+                }
+            }
+
+        }
+        return best;
+
+    }
 }
