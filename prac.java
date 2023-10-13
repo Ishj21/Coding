@@ -193,8 +193,17 @@ public class prac {
         // System.out.println(removeDuplicates(nums));
 
         /* 2873. Maximum Value of an Ordered Triplet I */
-        int nums[] = { 1, 2, 3 };
-        System.out.println(maximumTripletValue(nums));
+        // int nums[] = { 1, 2, 3 };
+        // System.out.println(maximumTripletValue(nums));
+
+        /* Check If N and Its Double Exist */
+        // int[] arr = { -2, 0, 10, -19, 4, 6, -8 };
+        // boolean ya = checkIfExist(arr);
+        // System.out.println(ya);
+
+        /* Smallest even multiple */
+        int ans = smallestEvenMultiple(5);
+        System.out.println(ans);
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -619,5 +628,43 @@ public class prac {
         }
         return best;
 
+    }
+
+    static boolean checkIfExist(int[] arr) {
+
+        Arrays.sort(arr);
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i != j) {
+                    if (arr[i] * 2 == arr[j]) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+
+    }
+
+    static int numberOfEmployeesWhoMetTarget(int[] hours, int target) {
+
+        int count = 0;
+        for (int i : hours) {
+            if (i >= target) {
+                count++;
+            }
+
+        }
+        return count;
+    }
+
+    static int smallestEvenMultiple(int n) {
+        int ans = 0;
+        for (int i = 1; i <= n * 2; i++)
+            if (i % 2 == 0 && n % i == 0) {
+                ans = i;
+            }
+
+        return ans;
     }
 }
