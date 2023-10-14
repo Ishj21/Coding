@@ -141,8 +141,8 @@ public class prac {
 
         /* Duplicate Zeros */
 
-        int[] arr = { 1, 0, 2, 3, 0, 4, 5, 0 };
-        duplicateZeros(arr);
+        // int[] arr = { 1, 0, 2, 3, 0, 4, 5, 0 };
+        // duplicateZeros(arr);
 
         /* minProcessingTime */
         // processorTime = [8,10], tasks = [2,2,3,1,8,7,4,5]
