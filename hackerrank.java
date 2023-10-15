@@ -1,12 +1,16 @@
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 public class hackerrank {
 
@@ -38,18 +42,43 @@ public class hackerrank {
         // System.out.println(tt);
         // System.out.println(tt2);
 
-        int n = 6, k = 3;
-        List<Integer> arr = new ArrayList<>();
+        // int n = 6, k = 3;
+        // List<Integer> arr = new ArrayList<>();
+        // arr.add(1);
+        // arr.add(3);
+        // arr.add(2);
+        // arr.add(6);
+        // arr.add(1);
+        // arr.add(2);
+        // int x = divisibleSumPairs(n, k, arr);
+
+        // System.out.println(x);
+
+        // List<Integer> arr = new ArrayList<>();
+        // arr.add(84);
+        // arr.add(29);
+        // arr.add(57);
+        // arr.add(38);
+
+        // List<Integer> ans = gradingStudents(arr);
+
+        // for (Integer integer : ans) {
+        // System.out.println(integer);
+        // }
+
+        List<Integer> arr = new ArrayList<Integer>();
         arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        arr.add(4);
         arr.add(3);
         arr.add(2);
-        arr.add(6);
         arr.add(1);
-        arr.add(2);
-        int x = divisibleSumPairs(n, k, arr);
+        int ar[] = { 34, 95, 34, 64, 45, 95, 16, 80, 80, 75, 3, 25, 75, 25, 31, 3, 64, 16, 31 };
+        List<Integer> list = Arrays.stream(ar).boxed().collect(Collectors.toList());
+        int x = lonelyinteger(list);
 
         System.out.println(x);
-
     }
 
     static void minmaxsum(List<Integer> arr) {
@@ -109,4 +138,41 @@ public class hackerrank {
 
     }
 
+    public static List<Integer> gradingStudents(List<Integer> grades) {
+        // Write your code here
+        List<Integer> ans = new ArrayList<>();
+        for (Integer num : grades) {
+            if (num < 40) {
+                ans.add(num);
+
+            } else {
+
+                double x = (Math.ceil((double) num / 5)) * 5;
+
+                if (x - num < 3) {
+                    ans.add((int) x);
+                } else {
+                    ans.add(num);
+                }
+
+            }
+        }
+        return ans;
+
+    }
+
+    public static int lonelyinteger(List<Integer> a) {
+        // Write your code here
+        Collections.sort(a);
+        int ans = a.get(a.size() - 1);
+        System.out.println(a);
+        for (int i = 1; i < a.size() - 1; i += 2) {
+
+            if (a.get(i) != a.get(i - 1)) {
+                ans = a.get(i - 1);
+                break;
+            }
+        }
+        return ans;
+    }
 }
