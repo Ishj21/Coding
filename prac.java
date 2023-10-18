@@ -217,11 +217,15 @@ public class prac {
         // // System.out.println(isPalandrome("1001"));
 
         /* MaxCandies */
-        int[] arr = { 12, 1, 12 };
-        List<Boolean> ans = kidsWithCandies(arr, 10);
-        for (Boolean boolean1 : ans) {
-            System.out.println(boolean1);
-        }
+        // int[] arr = { 12, 1, 12 };
+        // List<Boolean> ans = kidsWithCandies(arr, 10);
+        // for (Boolean boolean1 : ans) {
+        // System.out.println(boolean1);
+        // }
+
+        int[] ans = { 8, 1, 2, 2, 3 };
+        int[] anss = smallerNumbersThanCurrent(ans);
+        System.out.println(Arrays.toString(anss));
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -747,6 +751,25 @@ public class prac {
 
     }
 
+    public static int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] ans = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+
+            int count = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[j]<nums[i] && i!=j) {
+                    System.out.println(nums[i]);
+                    count++;
+                }
+
+                ans[i] = count;
+            }
+            System.out.print(count);
+        }
+
+        return ans;
+    }
 }
 
 class ParkingSystem {
