@@ -202,8 +202,20 @@ public class prac {
         // System.out.println(ya);
 
         /* Smallest even multiple */
-        int ans = smallestEvenMultiple(5);
-        System.out.println(ans);
+        // int ans = smallestEvenMultiple(5);
+        // System.out.println(ans);
+
+        /* count pairs */
+        List<Integer> ans = new ArrayList<>();
+        ans.add(-6);
+        ans.add(2);
+        ans.add(5);
+        ans.add(-2);
+        ans.add(-7);
+        ans.add(-1);
+        ans.add(3);
+        int anss = countPairs(ans, -2);
+        System.out.println(anss);
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -667,4 +679,24 @@ public class prac {
 
         return ans;
     }
+
+    static int countPairs(List<Integer> nums, int target) {
+
+        int ans = 0;
+        int count = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+
+                if (nums.get(i) + nums.get(j) < target) {
+                    count++;
+                    System.out.println("i: " + i + " " + nums.get(i));
+                    System.out.println("j: " + j + " " + nums.get(j));
+                }
+            }
+        }
+        return count;
+
+    }
+
 }
