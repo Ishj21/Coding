@@ -202,8 +202,30 @@ public class prac {
         // System.out.println(ya);
 
         /* Smallest even multiple */
-        // int ans = smallestEvenMultiple(5);
-        // System.out.println(ans);
+        // // int ans = smallestEvenMultiple(5);
+        // // System.out.println(ans);
+
+        /* parking system */
+        // ParkingSystem p = new ParkingSystem(1, 1, 0);
+        // boolean a = p.addCar(1);
+        // System.out.println(a);
+
+        /* Strictly palindromic number */
+        // int n = 5;
+        // boolean isStrictlyPalindromic = isStrictlyPalindromic(n);
+        // System.out.println(isStrictlyPalindromic);
+        // // System.out.println(isPalandrome("1001"));
+
+        /* MaxCandies */
+        // int[] arr = { 12, 1, 12 };
+        // List<Boolean> ans = kidsWithCandies(arr, 10);
+        // for (Boolean boolean1 : ans) {
+        // System.out.println(boolean1);
+        // }
+
+        int[] ans = { 8, 1, 2, 2, 3 };
+        int[] anss = smallerNumbersThanCurrent(ans);
+        System.out.println(Arrays.toString(anss));
 
         /* count pairs */
         List<Integer> ans = new ArrayList<>();
@@ -699,4 +721,111 @@ public class prac {
 
     }
 
+    static boolean isStrictlyPalindromic(int n) {
+        boolean ans = false;
+
+        for (int i = 2; i < n - 2; i++) {
+            String s = Integer.toString(n, i);
+            ans = isPalandrome(s);
+            if (ans == false) {
+                break;
+            }
+
+        }
+        return ans;
+
+    }
+
+    public static boolean isPalandrome(String n) {
+        char[] arr = n.toCharArray();
+        boolean ans = true;
+        int j = arr.length - 1;
+        for (int i = 0; i < arr.length / 2; i++) {
+
+            if (arr[i] != arr[j]) {
+                ans = false;
+                break;
+            }
+            System.out.println("i: " + i + " j: " + j--);
+
+        }
+
+        return ans;
+
+    }
+
+    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+
+        List<Boolean> ans = new ArrayList<>();
+
+        int maxCandy = 0;
+        for (Integer candi : candies) {
+
+            if (candi > maxCandy) {
+                maxCandy = candi;
+            }
+
+        }
+        System.out.println(maxCandy);
+
+        for (Integer candi : candies) {
+
+            if (candi + extraCandies >= maxCandy) {
+                ans.add(true);
+            } else {
+                ans.add(false);
+            }
+
+        }
+
+        return ans;
+
+    }
+
+    public static int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] ans = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+
+            int count = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[j] < nums[i] && i != j) {
+                    System.out.println(nums[i]);
+                    count++;
+                }
+
+                ans[i] = count;
+            }
+            System.out.print(count);
+        }
+
+        return ans;
+    }
+}
+
+class ParkingSystem {
+
+    int big, medium, small;
+
+    public ParkingSystem(int big, int medium, int small) {
+        this.big = big;
+        this.medium = medium;
+        this.small = small;
+    }
+
+    public boolean addCar(int carType) {
+
+        boolean isAvailable = false;
+        if (carType == 1 && big - 1 >= 0) {
+            big--;
+            isAvailable = true;
+        } else if (carType == 2 && medium - 1 >= 0) {
+            medium--;
+            isAvailable = true;
+        } else if (carType == 3 && small - 1 >= 0) {
+            small--;
+            isAvailable = true;
+        }
+        return isAvailable;
+    }
 }
