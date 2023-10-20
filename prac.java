@@ -223,21 +223,28 @@ public class prac {
         // System.out.println(boolean1);
         // }
 
-        int[] ans = { 8, 1, 2, 2, 3 };
-        int[] anss = smallerNumbersThanCurrent(ans);
-        System.out.println(Arrays.toString(anss));
+        // int[] ans = { 8, 1, 2, 2, 3 };
+        // int[] anss = smallerNumbersThanCurrent(ans);
+        // System.out.println(Arrays.toString(anss));
 
-        /* count pairs */
-        List<Integer> ans = new ArrayList<>();
-        ans.add(-6);
-        ans.add(2);
-        ans.add(5);
-        ans.add(-2);
-        ans.add(-7);
-        ans.add(-1);
-        ans.add(3);
-        int anss = countPairs(ans, -2);
-        System.out.println(anss);
+        // /* count pairs */
+
+        // List<Integer> ans = new ArrayList<>();
+        // ans.add(-6);
+        // ans.add(2);
+        // ans.add(5);
+        // ans.add(-2);
+        // ans.add(-7);
+        // ans.add(-1);
+        // ans.add(3);
+        // int anss = countPairs(ans, -2);
+        // System.out.println(anss);
+
+        /* most words count */
+        String[] arr = { "alice and bob love leetcode", "i think so too", "this is great thanks very much" };
+
+        int ans = mostWordsFound(arr);
+        System.out.println(ans);
     }
 
     static int numIdenticalPairs(int[] nums) {
@@ -800,6 +807,39 @@ public class prac {
         }
 
         return ans;
+    }
+
+    static public int mostWordsFound(String[] sentences) {
+        // int ans = 0;
+        int count = 0;
+        for (String sentence : sentences) {
+            String[] words = sentence.split(" ");
+            if (words.length > count) {
+                count = words.length;
+            }
+        }
+
+        return count;
+    }
+
+    static public int countValidWords(String sentence) {
+        int count = 0;
+        for (String sentence : sentences) {
+            String[] words = sentence.split(" ");
+            for (String word : words) {
+                if (word.matches(".*\\d.*")) {
+                    break;
+                }
+                if (word.matches("^-.*|.*-$")) {
+                    break;
+                }
+            }
+            if (words.length > count) {
+                count = words.length;
+            }
+        }
+
+        return count;
     }
 }
 
